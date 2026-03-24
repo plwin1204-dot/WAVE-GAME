@@ -57,8 +57,8 @@
   function payWithWave() {
       let userId = prompt("လူကြီးမင်း၏ နာမည်ကို ရိုက်ထည့်ပါ:");
       if(userId) {
-          alert("Wave Pay ၀၉xxxxxxxxx သို့ ၁,၀၀၀ ကျပ်လွှဲပြီး Screenshot ပို့ပေးပါ။");
-          database.ref('orders/' + userId).set({
+          alert("Wave Pay ၀၉၇၉၆၁၆၆၀၁၃သို့ ၁,၀၀၀ ကျပ်လွှဲပြီး Screenshot ပို့ပေးပါ။");
+          database.ref('orders/'+ userId).set({
               item: "ရွှေဒင်္ဂါး ၁၀၀",
               status: "Pending",
               time: new Date().toLocaleString()
@@ -66,4 +66,3 @@
       }
   }
 </script>
-
