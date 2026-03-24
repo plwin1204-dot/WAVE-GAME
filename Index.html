@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First Telegram Game</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: sans-serif; 
+            background-color: #f3f3f3;
+            padding-top: 50px;
+        }
+        button { 
+            padding: 15px 30px; 
+            font-size: 20px; 
+            background-color: #0088cc; 
+            color: white; 
+            border: none; 
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>မင်္ဂလာပါ Telegram Game မှ</h1>
+    <p>ရမှတ်: <span id="score">0</span></p>
+    <button onclick="updateScore()">နှိပ်ပါ</button>
+
+    <script>
+        let score = 0;
+        function updateScore() {
+            score++;
+            document.getElementById('score').innerText = score;
+        }
+    </script>
+</body>
+</html> 
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+<script>
+  // အခုနက Firebase ကရလာတဲ့ Config ကို ဒီနေရာမှာ အစားထိုးပါ
+  const firebaseConfig = {
+    apiKey: "AIzaSyD09qFk73aPixnbfGt5...", 
+    authDomain: "wave-game-10248.firebaseapp.com",
+    projectId: "wave-game-10248",
+    storageBucket: "wave-game-10248.appspot.com",
+    messagingSenderId: "667587056453",
+    appId: "1:667587056453:web:cae2e3...",
+    measurementId: "G-RZ7SSE30KC",
+    databaseURL: "https://wave-game-10248-default-rtdb.firebaseio.com"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  // Wave Pay ဝယ်ယူမှုလုပ်ဆောင်ချက်
+  function payWithWave() {
+      let userId = prompt("လူကြီးမင်း၏ နာမည်ကို ရိုက်ထည့်ပါ:");
+      if(userId) {
+          alert("Wave Pay ၀၉xxxxxxxxx သို့ ၁,၀၀၀ ကျပ်လွှဲပြီး Screenshot ပို့ပေးပါ။");
+          database.ref('orders/' + userId).set({
+              item: "ရွှေဒင်္ဂါး ၁၀၀",
+              status: "Pending",
+              time: new Date().toLocaleString()
+          });
+      }
+  }
+</script>
+
